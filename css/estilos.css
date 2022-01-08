@@ -1,0 +1,149 @@
+            #contenedor{ width: auto;   
+           
+                font: 1.2em Helvetica, Arial, sans-serif;	 
+                padding: 0;
+               
+                margin-left: 2%;
+                margin-right: 2%;
+                  
+                display: grid;
+                grid-template-areas:  "a a"
+                                      "b b"
+                                      "g g"
+                                      "c d"
+                                      "e e"
+                                       ;                          
+                
+                 grid-template-rows: 100x 30px  auto 50px 60px; 
+                 grid-template-columns: 4.5fr 3fr; 
+              } 
+            #cabecera{
+                grid-area:a; 
+            }
+            #botonera{
+                grid-area:b; 
+            }
+            #cajaGrabar{
+                grid-area:c; 
+            }
+            #contenedorFoto{
+                grid-area:d; 
+            }
+            #tituloDocumentaion{      grid-area:e;       }
+            #GaleriaSuperior{         grid-area:g; 
+              background-color: rgb(249, 250, 250);
+              margin-bottom: 1%;  
+              
+               }
+             
+            /****** Cpntenedeor  TAREAS *********************/
+            #contenedorTareas{ width: auto;              
+                font: 1.2em Helvetica, Arial, sans-serif;	 
+                padding: 0;               
+                margin-left: 2%;
+                margin-right: 2%;
+                  
+                display: grid;
+                grid-template-areas:  "at bt ct"
+                                      "dt dt dt";
+                                                            
+                
+                 grid-template-rows: auto auto; 
+                 grid-template-columns:1fr 1fr 1fr; 
+              } 
+             
+            #descripcion      {       grid-area:at;       }
+            #medidas           {      grid-area:bt;       }
+            #desarrollo           {   grid-area:ct;       }
+            #mapa           {         grid-area:dt;       }
+
+             
+            .titulo{ font-size: 12pt; font-weight: bold;}
+            #camara, #foto, #miim  {
+                width: 100%;
+                min-height: 300px; 
+                border: 2px solid #0f0f0f;
+            }
+            textarea{
+                border: 2px solid #0f0f0f;
+            }
+       /*     #galeria img{width:50px;height:50px;margin-bottom:5px;margin-top:5px;margin-left:90px}
+            #galeria{background-color: white;height: 500px}*/
+            body{
+                /*background: linear-gradient(30deg, #e3f8f8, #a9f3c6);*/
+                background-color: #8b8d8c;
+                padding:30px;
+
+            }
+            #botonera{margin-bottom:10px;}
+
+         /*   #cajaGrabar{visibility: hidden} */
+
+             img{border-radius: 5px;
+                -moz-box-shadow: rgb(150,150,150) 5px 5px;
+                -webkit-box-shadow: rgb(150,150,150) 5px 5px;
+                margin: 1%;
+              /*  box-shadow: rgb(150,150,170) 15px 25px;*/
+            } 
+            #rueda{background-color: white;height: 600px}
+
+            .escala{
+                -moz-transform: scale(2);
+                -webkit-transform: scale(2);
+                transform: scale(3,3);
+            }
+              .escala2{
+                -moz-transform: scale(2);
+                -webkit-transform: scale(2);
+                transform: scale(1,1);
+            }
+            .maximizada{
+                -moz-transform: skew(20deg,-30deg);
+                -webkit-transform: skew(20deg,-30deg);
+                transform: skew(10deg,-10deg); 
+               
+            }
+            .maximizada2{
+                -moz-transform: skew(20deg,-30deg);
+                -webkit-transform: skew(20deg,-30deg);
+                transform: skew(-10deg,10deg);}            
+            #principal {
+                display: block;
+                width: 90%;
+                margin: 10px auto;
+                padding: 15px;
+                text-align: center;
+                border: 1px solid #999999;
+                background: #DDDDDD;
+                -moz-border-radius: 20px;
+                -webkit-border-radius: 20px;
+                border-radius: 20px;
+                /*-moz-box-shadow: rgb(150,150,150) 5px 5px 10px;*/
+                /*-webkit-box-shadow: rgb(150,150,150) 5px 5px 10px;*/
+                /*box-shadow: rgb(150,150,150) 5px 5px 10px;*/
+                background: -webkit-radial-gradient(center, #FFFFFF, #006699);
+                background: -moz-radial-gradientt(center, #FFFFFF, #006699);
+                background: -ms-radial-gradient(center, #FFFFFF, #006699);
+                background: radial-gradient(center, circle, #FFFFFF 0%, #006699 200%);
+         
+                background-repeat:no-repeat;
+            }
+            #Video1{ width:90%;height: auto;}
+
+            legend{color:#000000;
+               
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            }
+
+            #lupa{width:20px;height:20px}
+            input[type="file"]{
+            z-index: 999;
+            line-height: 0;
+            font-size: 8px;
+            position: absolute;
+
+            opacity: 0;
+            filter: alpha(opacity = 50);-ms-filter: "alpha(opacity=0)";
+            margin: 0;
+            padding:0;
+            left:100;top:100;width:20px }

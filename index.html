@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+
+<head>
+    <title>Objetivos del Desarrollo Sostenible</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="./imagenes/Logo.jpg" />
+    <link rel="stylesheet" href="./css/estilos.css">
+
+</head>
+
+<body>
+    <div id="contenedor">
+        <header id="cabecera">
+            <h1 id="principal">🎦 Objetivos del Desarrollo Sostenible</h1>
+        </header>
+        <section id='botonera'>
+            <b>Seleccionar Video</b><input type="text" id="VideoReproduciendose" />
+            <input type="file" id="files"><b id="lupa">🎦 </b> </input>
+
+            Nombre de la Tarea <input type="text" id="cclasificacion" />
+
+            <input id='botonFoto' type='button' value='Foto📷'> </input>
+            <input id='botonGrabar' type='button' value='Grabar💾' disabled> </input>
+            
+            <input type="button" id="leerBd" value="Leer▶" />
+ 
+            <input type="button" id="opcionGaleria" value="Galeria🎞️"/>
+            <input type="button" id="opcionBorrar" value="Borrar✖️"/>
+        </section>
+        <div id="GaleriaSuperior"></div>
+        <div id='cajaGrabar'>
+
+            <video id="Video1" controls style="border: 1px solid blue;" height="540" width="620" source
+                src="Q:\TFAngel\2022\Camara\canvas\objetivos de desarrollo sostenible.mp4" type="video/mp4" />
+
+        </div>
+
+        <div class="contenedorFoto">
+            <div class="titulo">Foto</div>
+            <canvas id="foto" style="background-color: azure;""> </canvas>
+        </div>
+        <fieldset id='tituloDocumentaion'>
+            <legend>Título Actividad</legend>
+
+            <input type="text" id="TituloActividad" style="width: 100%;font-size: 24px;">
+        </fieldset>
+    </div>
+    <div id="contenedorTareas">
+        <fieldset id='descripcion'>
+            <legend>Descripción</legend>
+            <textarea id="tDescripcion" rows="10" cols="42">  </textarea>
+        </fieldset>
+        <fieldset id='medidas'>
+            <legend>Medidas a realizar</legend>
+            <textarea  id="tMedidas"  rows="10" cols="42">   </textarea>
+        </fieldset>
+        <fieldset id='desarrollo'>
+            <legend>Desarrollo de las medias</legend>
+            <textarea  id="tDesarrollo" rows="10" cols="42">   </textarea>
+        </fieldset>
+        <fieldset id='mapa'>
+            <legend>Mapa</legend>
+            
+    <canvas id="lienzo" width="1024" height="600"></canvas> 
+
+        </fieldset>
+
+    </div>
+
+
+   <!-- <img src="" id="imagenLeida" />
+    <div id="galeria">
+
+    </div>-->
+ <!--   <div id="rueda">
+        <img src="" id="r0" alt=""
+            style="border:aquamarine solid 2px     ;position:absolute;left:500px;top:230px;width:150px;height:200px" />
+        <img src="" id="r1" alt=""
+            style="border:aquamarine solid 2px; position:absolute;left:600px;top:290px;width:150px;height:200px" />
+        <img src="" id="r2" alt=""
+            style="border:aquamarine solid 2px; position:absolute;left:700px;top:350px;width:150px;height:200px" />
+        <img src="" id="r3" alt=""
+            style="border:aquamarine solid 2px; position:absolute;left:800px;top:410px;width:150px;height:200px" />
+        <img src="" id="r4" alt=""
+            style="border:aquamarine solid 2px; position:absolute;left:700px;top:460px;width:150px;height:200px" />
+        <img src="" id="r5" alt=""
+            style="border:aquamarine solid 2px; position:absolute;left:600px;top:520px;width:150px;height:200px" />
+        <img src="" id="r6" alt=""
+            style="border:aquamarine solid 2px; position:absolute;left:500px;top:580px;width:150px;height:200px" />
+        <img src="" id="r7" alt=""
+            style="border:aquamarine solid 2px; position:absolute;left:400px;top:520px;width:150px;height:200px" />
+        <img src="" id="r8" alt=""
+            style="border:aquamarine solid 2px; position:absolute;left:300px;top:460px;width:150px;height:200px" />
+        <img src="" id="r9" alt=""
+            style="border:aquamarine solid 2px; position:absolute;left:200px;top:410px;width:150px;height:200px" />
+        <img src="" id="r10" alt=""
+            style="border:aquamarine solid 2px; position:absolute;left:300px;top:350px;width:150px;height:200px" />
+        <img src="" id="r11" alt=""
+            style="border:aquamarine solid 2px; position:absolute;left:400px;top:290px;width:150px;height:200px" />
+        <input type="button" onclick="visualizaRueda()" value="VR" />
+    </div>
+-->
+    <script src="./js/funciones.js"></script>
+
+</body>
+
+</html>
