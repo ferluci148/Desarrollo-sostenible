@@ -70,7 +70,7 @@ function leerTareaPorIndiceClasificacion()
    //  contenedor.appendChild(imagenLeidaIDB)
     imagenLeidaIDB.src=datos.imagen;
     imagenLeidaIDB.addEventListener("load",(event)=>{       
-        ctxImagenTarea.drawImage(imagenLeidaIDB,0,0);
+        ctxImagenTarea.drawImage(imagenLeidaIDB,0,0); 
     });
 //                   -------------------------------------
 // Puntos DEL MAPA

@@ -17,6 +17,40 @@
                  grid-template-rows: 100x 30px  auto 50px 60px; 
                  grid-template-columns: 4.5fr 3fr; 
               } 
+
+              @media screen and (max-width: 500px)
+              {
+                #principal{
+                    display: block;	  
+                    margin-left: 0%; 
+                  /*  margin-top: 100px; */
+                    font-size: 18px; 
+                }    
+                #cajaGrabar{
+                    width:100%; 
+                    margin: 0px;
+                    text-align: center;
+                }        
+                #contenedor  {
+                 font: 1.2em Helvetica, Arial, sans-serif;	 
+                 padding: 0;              
+                 margin:15px;                 
+                   
+                 display: grid;
+                 grid-template-areas:  "a"
+                                       "b"
+                                       "g"
+                                       "d"
+                                       "c" 
+                                       "e";                       
+                 grid-template-rows: auto auto  auto auto auto auto;   
+                 grid-template-columns: 1fr; 
+               }
+              
+              }
+              
+            
+
             #cabecera{
                 grid-area:a; 
             }
@@ -51,7 +85,26 @@
                  grid-template-rows: auto auto; 
                  grid-template-columns:1fr 1fr 1fr; 
               } 
-             
+      
+              @media screen and (max-width: 500px)
+              {
+                #contenedorTareas{ width: auto;              
+                    font: 1.2em Helvetica, Arial, sans-serif;	 
+                    padding: 0;               
+                    margin-left: 0%;
+                    margin-right: 0%;
+                      
+                    display: grid;
+                    grid-template-areas:  "at"
+                                          "bt"
+                                          "ct"
+                                          "dt";
+                                                                
+                    
+                     grid-template-rows: auto auto auto auto; 
+                     grid-template-columns:1fr; 
+                  } 
+              }
             #descripcion      {       grid-area:at;       }
             #medidas           {      grid-area:bt;       }
             #desarrollo           {   grid-area:ct;       }
@@ -59,6 +112,17 @@
 
              
             .titulo{ font-size: 12pt; font-weight: bold;}
+  
+   #columna { width: auto;margin: 1%;}
+   #seccion { width: auto;margin: 1%;}
+   #pie { padding: 1%;}
+  
+  
+
+
+
+
+
             #camara, #foto, #miim  {
                 width: 100%;
                 min-height: 300px; 
