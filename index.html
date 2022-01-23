@@ -24,7 +24,7 @@ and open the template in the editor.
             <b>Seleccionar Video</b><input type="text" id="VideoReproduciendose" />
             <input type="file" id="files"><b id="lupa">🎦 </b> </input>
 
-            Nombre de la Tarea <input type="text" id="cclasificacion" />
+            Objetivo <input type="text" id="cclasificacion" /><select id="tareasCreadas"/>
 
             <input id='botonFoto' type='button' value='Foto📷'> </input>
             <input id='botonGrabar' type='button' value='Grabar💾' disabled> </input>
@@ -54,15 +54,15 @@ and open the template in the editor.
     </div>
     <div id="contenedorTareas">
         <fieldset id='descripcion'>
-            <legend>Descripción</legend>
+            <legend><input  value="Descripción" placeholder="Escribe la cuestión 1 a responder(Descripción)" class="preguntas" id="pregunta1"type="text"  </legend>
             <textarea id="tDescripcion" rows="10" cols="42">  </textarea>
         </fieldset>
         <fieldset id='medidas'>
-            <legend>Medidas a realizar</legend>
+            <legend><input class="preguntas" id="pregunta2"type="text" value="Medidas a realizar"/></legend>
             <textarea  id="tMedidas"  rows="10" cols="42">   </textarea>
         </fieldset>
         <fieldset id='desarrollo'>
-            <legend>Desarrollo de las medidas</legend>
+            <legend><input class="preguntas" id="pregunta3"type="text" value="Desarrollo de las medidas"/></legend>
             <textarea  id="tDesarrollo" rows="10" cols="42">   </textarea>
         </fieldset>
         <fieldset id='mapa'>
@@ -107,6 +107,8 @@ and open the template in the editor.
         <input type="button" onclick="visualizaRueda()" value="VR" />
     </div>
 -->
+
+ 
     <script src="./js/funciones.js"></script>
 
 </body>
