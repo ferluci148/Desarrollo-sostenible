@@ -12,6 +12,13 @@ document.getElementById('opcionGaleria').addEventListener('click', galeriaTareas
 
 document.getElementById('opcionBorrar').addEventListener('click', BorrarTareaSeleccionada, false);//VisualizarBD, false);
 
+// Copia la tarea seleccionada en la select na Nombre de la Tarea, pñara seleccionarla 
+// por Galeria o por leer
+tareasCreadas.addEventListener("change", ()=>{
+    cclasificacion.value= tareasCreadas.options[tareasCreadas.selectedIndex].text
+    idImagenSeleccionadaEnGaleria= tareasCreadas.options[tareasCreadas.selectedIndex].value;
+ 
+}, false);
 
 window.URL = window.URL || window.webkitURL;
 dataBase = null;
@@ -30,7 +37,7 @@ var tabla = null;
 function abrirBD() {
 
 
-
+   let yaCreada=false;
     var cajaGrabar = document.querySelector("#cajaGrabar");
     cajaGrabar.style.display = "block";
 
@@ -43,34 +50,90 @@ function abrirBD() {
         var tabla = orden.createObjectStore("galeria", { keyPath: 'id', autoIncrement: true });
         tabla.createIndex('by_clasificacion', 'clasificacion', { unique: false });
     }
+
+
+    dataBase.onsuccess = function (e) {       
+      // Rellenar select tareas ya existentes
+      orden = dataBase.result;
+      var transacion = orden.transaction(["galeria"], "readonly");
+      var tabla = transacion.objectStore("galeria");
+      request = tabla.openCursor(null, 'next');
+       
+      
+      request.onerror = function (event) {
+          alert("Error lectura secuencial de la tabla libro ");
+      };
+      request.onsuccess = function (event) {
+          cursor = event.target.result;          
+          if (cursor) {    
+             yaCreada=chequearTareaEnSelect(cursor.value.clasificacion);
+             
+             if(yaCreada==false){
+              tareasCreadas.innerHTML= tareasCreadas.innerHTML+"<option value='"+cursor.value.id+"'>"+cursor.value.clasificacion+"</option>"
+             }
+             yaCreada=false
+              cursor.continue();
+          } 
+       
+
+        }
+       
+    };
+    dataBase.onerror = function (e) {
+        // Si se produce un error se ejecuta este método. Ocurre cuando cambiamos de versión
+        alert('Error cargandoo la base de datos ' + e.target);
+    };
 }
 
+// Comprueba que la tarea no este ya en la select que visualiza un
+//option por cada tarea ya creada
+function chequearTareaEnSelect(nombreTarea)
+{ 
+    let existe=false;
+    for(let i=0;i< tareasCreadas.options.length;i++){
+     if(tareasCreadas.options[i].text == nombreTarea)
+        {  existe=true;
+            break
+        }
+    }
+    return existe;
+    
+}
 
 function leerTareaPorIndiceClasificacion() {
     var orden = dataBase.result;
     var transacion = orden.transaction(["galeria"], "readonly");
     var tabla = transacion.objectStore("galeria");
-    var index = tabla.index("by_clasificacion");
-    index.get(cclasificacion.value).onsuccess = function (evt) {
+   // var index = tabla.index("by_clasificacion");
+     //var request = tabla.get(claves[idImagenSeleccionadaEnGaleria]);
+        //index.get(cclasificacion.value).onsuccess = function (evt) {
+    //alert(idImagenSeleccionadaEnGaleria)
+    var request = tabla.get(parseInt(idImagenSeleccionadaEnGaleria));
+    //var request = tabla.get(claves[idImagenSeleccionadaEnGaleria]);
+    request.onsuccess = function (evt) {
+    //index.get(cclasificacion.value).onsuccess = function (evt) {
         var datos = evt.target.result;
         //  alert(datos.clasificacion);
 
         /* * **         **  Visualizar los datos de la Tarea  **            ** */
         /* ------------------------------------------------------------------- */
         TituloActividad.value = datos.clasificacion;
+        pregunta1.value=datos.pregunta1;
         tDescripcion.value = datos.descripcion;
+        pregunta2.value=datos.pregunta2;
         tMedidas.value = datos.medidas;
+        pregunta3.value=datos.pregunta3;
         tDesarrollo.value = datos.desarrollo;
         //                   -------------------------------------
         //Dibujar Imagen de la tarea en el canvas
         //                   -------------------------------------
         let ctxImagenTarea = oFoto.getContext("2d");
         let imagenLeidaIDB = new Image();
-        // alert(datos.imagen)
+       console.log(datos.imagen)
         //  contenedor.appendChild(imagenLeidaIDB)
         imagenLeidaIDB.src = datos.imagen;
         imagenLeidaIDB.addEventListener("load", (event) => {
-            ctxImagenTarea.drawImage(imagenLeidaIDB, 0, 0);
+            ctxImagenTarea.drawImage(imagenLeidaIDB, 0, 0,300,150);
         });
         //                   -------------------------------------
         // Puntos DEL MAPA
@@ -128,8 +191,11 @@ function GrabaTarea() {
         var request = tabla.put({
             "clasificacion": cclasificacion.value,
             "imagen": myImage,
+            "pregunta1":pregunta1.value,
             "descripcion": tDescripcion.value,
+            "pregunta2":pregunta2.value,
             "medidas": tMedidas.value,
+            "pregunta3":pregunta3.value,
             "desarrollo": tDesarrollo.value,
             "puntosMapa": puntosMapa
 
@@ -241,8 +307,7 @@ function visualizarMapaMundi() {
     })
 
     lienzo.addEventListener("click", (event) => {
-
-
+ 
         // Dibujo a mano alzada
         let x = event.clientX;
         let y = event.clientY;
@@ -305,15 +370,22 @@ function galeriaTareasSuperior() {
     var transacion = orden.transaction(["galeria"], "readonly");
     var tabla = transacion.objectStore("galeria");
     request = tabla.openCursor(null, 'next');
+     
+    
     request.onerror = function (event) {
         alert("Error lectura secuencial de la tabla libro ");
     };
     request.onsuccess = function (event) {
 
         cursor = event.target.result;
+  
         if (cursor) {
-            claves.push(cursor.value.id);
-            imagenesBD.push(cursor.value.imagen);
+       //     alert(cursor.value.clasificacion)
+            if(cursor.value.clasificacion ==cclasificacion.value)
+            {
+                claves.push(cursor.value.id);
+                imagenesBD.push(cursor.value.imagen);
+             }
             cursor.continue();
         }
         else {
@@ -330,6 +402,7 @@ function galeriaTareasSuperior() {
     };
 }
 let idtareABorrar;
+let idImagenSeleccionadaEnGaleria;
 let imagenBorraDeGaleria;
 function pantallazoSuperor(posicionclaves) {
     //  alert(posicionclaves)
@@ -358,6 +431,7 @@ function pantallazoSuperor(posicionclaves) {
         imagenleida.addEventListener("click", function () {
             cclasificacion.value = this.alt;
             idtareABorrar = imagenleida.title;
+            idImagenSeleccionadaEnGaleria= imagenleida.title;
             imagenBorraDeGaleria = imagenleida;
             leerTareaPorIndiceClasificacion();
         }, false)
